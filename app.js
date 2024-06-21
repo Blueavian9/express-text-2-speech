@@ -11,28 +11,24 @@ const client = new Polly({
 
 const speechParams = {
   OutputFormat: "mp3",
-  Text: "Hello From Polly",
+  Text: "I Am a Fish",  // Default text
   TextType: "text",
   VoiceId: "Matthew",
 };
 
 const speakText = async () => {
-  // Update the Text parameter with the text entered by the user
-  speechParams.Text = "I Am a Fish";
   try {
     let url = await getSynthesizeSpeechUrl({
       client,
       params: speechParams,
     });
-    console.log(url);
-    // Load the URL of the voice recording into the browser
-    // document.getElementById("audioSource").src = url;
-    // document.getElementById("audioPlayback").load();
-    // document.getElementById("result").innerHTML = "Speech ready to play.";
+    console.log(url);  // Log the URL to verify correctness
+    return url;
   } catch (err) {
     console.log("Error", err);
-    // document.getElementById("result").innerHTML = err;
+    throw new Error("Failed to generate speech URL");
   }
 };
 
+// Call the speakText function when the script is executed
 speakText();

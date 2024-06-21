@@ -24,7 +24,7 @@ npm run dev
 
 
 ### TODO
-- [] change the server.js file at line 47
+- [ ] change the server.js file at line 47
 
 current line 47:
 ```JavaScript
