@@ -47,27 +47,17 @@ const speakText = async (text) => {
   //   const audioUrl = await speakText();
   //   res.send(`<audio controls src=${JSON.stringify(audioUrl)}></audio>`); // TODO: Change this line
   // });
-  
+
 
   app.get('/', async (req, res) => {
     try {
       const audioUrl = await speakText("I Am a Fish, and hello Cesar");
-      res.send(`
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Text to Speech</title>
-        </head>
-        <body>
-          <audio controls>
+      res.send(`<audio controls>
             <source src="${audioUrl}" type="audio/mpeg">
             Your browser does not support the audio element.
-          </audio>
-        </body>
-        </html>
-      `);
+          </audio>`);
+       
+
     } catch (err) {
       res.status(500).send("An error occurred while generating the speech URL.");
     }
